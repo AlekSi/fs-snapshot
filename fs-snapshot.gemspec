@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "fs-snapshot.gemspec",
      "lib/fs-snapshot.rb",
      "lib/fs-snapshot/fs-snapshoter.rb",
      "test/helper.rb",
