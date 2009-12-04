@@ -65,6 +65,18 @@ class TestFsSnapshoter < Test::Unit::TestCase
 			assert_equal ['snap1'], @snapshoter.list
 			assert_equal children, all_children(@data_dir)
 		end
+
+		should "raise exceptions" do
+			assert_raise RuntimeError do
+				@snapshoter.take('snap1')
+			end
+			assert_raise RuntimeError do
+				@snapshoter.restore('no_such_snapshot')
+			end
+			assert_raise RuntimeError do
+				@snapshoter.delete('no_such_snapshot')
+			end
+		end
 	end
 
 end

@@ -21,6 +21,7 @@ class FsSnapshoter
 
 	# Takes a snapshot.
 	def take(name)
+		raise "Snapshot already exists - '#{name}'!" if list.include? name
 		dir = snapshot_dir(name)
 		dir.mkdir
 		FileUtils.cp_r @data_dir.to_str + '/.', dir
@@ -29,6 +30,7 @@ class FsSnapshoter
 
 	# Restores a snapshot.
 	def restore(name)
+		raise "No such snapshot - '#{name}'!" unless list.include? name
 		FileUtils.rm_rf @data_dir
 		FileUtils.cp_r snapshot_dir(name).to_str + '/.', @data_dir
 		return true
@@ -36,6 +38,7 @@ class FsSnapshoter
 
 	# Deletes a snapshot.
 	def delete(name)
+		raise "No such snapshot - '#{name}'!" unless list.include? name
 		FileUtils.rm_r snapshot_dir(name)
 		return true
 	end
