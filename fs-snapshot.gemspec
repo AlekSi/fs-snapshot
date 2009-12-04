@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fs-snapshot}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aleksey Palazhchenko"]
@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "fs-snapshot.gemspec",
-     "lib/fs-snapshoter.rb",
+     "lib/fs-snapshot.rb",
+     "lib/fs-snapshot/fs-snapshoter.rb",
      "test/helper.rb",
      "test/test_fs-snapshoter.rb"
   ]
