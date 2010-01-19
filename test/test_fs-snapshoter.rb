@@ -41,8 +41,8 @@ class TestFsSnapshoter < Test::Unit::TestCase
 	end
 
 	should "return passed parameters" do
-		assert_contains [@data_dir, Pathname.new('/private' + @data_dir)], @snapshoter.data_dir
-		assert_contains [@snapshots_dir, Pathname.new('/private' + @snapshots_dir)], @snapshoter.snapshots_dir
+		assert_contains [@data_dir, Pathname.new('/private' + @data_dir.to_s)], @snapshoter.data_dir
+		assert_contains [@snapshots_dir, Pathname.new('/private' + @snapshots_dir.to_s)], @snapshoter.snapshots_dir
 	end
 
 	should "return empty snapshots list" do
@@ -53,7 +53,7 @@ class TestFsSnapshoter < Test::Unit::TestCase
 		setup do
 			@snapshoter.take 'snap1'
 			assert_equal ['snap1'], @snapshoter.list
-			assert_equal ['snap1'], @snapshoter.snapshots_dir.children(false).collect { |entry| entry.to_str }
+			assert_equal ['snap1'], @snapshoter.snapshots_dir.children(false).collect { |entry| entry.to_s }
 		end
 
 		should "delete snapshot" do

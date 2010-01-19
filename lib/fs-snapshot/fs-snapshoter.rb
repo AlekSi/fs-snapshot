@@ -16,7 +16,7 @@ class FsSnapshoter
 
 	# Returns array of existing snapshots.
 	def list
-		@snapshots_dir.children(false).collect { |entry| entry.to_str }
+		@snapshots_dir.children(false).collect { |entry| entry.to_s }
 	end
 
 	# Takes a snapshot.
@@ -24,7 +24,7 @@ class FsSnapshoter
 		raise "Snapshot already exists - '#{name}'!" if list.include? name
 		dir = snapshot_dir(name)
 		dir.mkdir
-		FileUtils.cp_r @data_dir.to_str + '/.', dir
+		FileUtils.cp_r @data_dir.to_s + '/.', dir
 		return true
 	end
 
@@ -32,7 +32,7 @@ class FsSnapshoter
 	def restore(name)
 		raise "No such snapshot - '#{name}'!" unless list.include? name
 		FileUtils.rm_rf @data_dir
-		FileUtils.cp_r snapshot_dir(name).to_str + '/.', @data_dir
+		FileUtils.cp_r snapshot_dir(name).to_s + '/.', @data_dir
 		return true
 	end
 
