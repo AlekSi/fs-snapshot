@@ -1,6 +1,28 @@
 = fs-snapshot
 
-Description goes here.
+Tiny gem to manage directory snapshots.
+
+It's helpful for tests when file system is used by external programs:
+  require 'test/unit'
+  require 'active_support'
+  require 'active_support/test_case'
+  require 'fs-snapshot'
+
+  class ActiveSupport::TestCase
+    @@snapshoter = FsSnapshoter.new '/var/db/repositories', '/tmp/snapshots'
+    SNAPSHOT_NAME = 'snap'
+
+    setup :take_snapshot
+    def take_snapshot
+      @@snapshoter.take(SNAPSHOT_NAME)
+    end
+
+    teardown :restore_snapshot
+    def restore_snapshot
+      @@snapshoter.restore(SNAPSHOT_NAME)
+      @@snapshoter.delete(SNAPSHOT_NAME)
+    end
+  end
 
 == Note on Patches/Pull Requests
  

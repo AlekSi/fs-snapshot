@@ -5,12 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "fs-snapshot"
-    gem.summary = "Manages snapshots of the filesystem."
-    gem.description = ""
-    gem.email = "alek.silverstone@gmail.com"
+    gem.summary = "Tiny gem to manage directory snapshots."
+    gem.description = nil
+    gem.email = "alek@silverstone.name"
     gem.homepage = "http://github.com/AlekSi/fs-snapshot"
     gem.authors = ["Aleksey Palazhchenko"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -34,7 +34,7 @@ begin
   end
 rescue LoadError
   task :rcov do
-    abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+    abort "RCov is not available. In order to run rcov, you must: gem install rcov"
   end
 end
 
