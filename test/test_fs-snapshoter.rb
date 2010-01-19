@@ -41,8 +41,8 @@ class TestFsSnapshoter < Test::Unit::TestCase
 	end
 
 	should "return passed parameters" do
-		assert_equal @data_dir, @snapshoter.data_dir
-		assert_equal @snapshots_dir, @snapshoter.snapshots_dir
+		assert_contains [@data_dir, Pathname.new('/private' + @data_dir)], @snapshoter.data_dir
+		assert_contains [@snapshots_dir, Pathname.new('/private' + @snapshots_dir)], @snapshoter.snapshots_dir
 	end
 
 	should "return empty snapshots list" do
