@@ -1,5 +1,4 @@
 require 'helper'
-require 'tmpdir'
 
 class TestFsSnapshoter < Test::Unit::TestCase
 
@@ -13,8 +12,12 @@ class TestFsSnapshoter < Test::Unit::TestCase
 	end
 
 	def setup
-		@data_dir = Pathname.new(Dir.mktmpdir ['fs-snap-', '-data'])
-		@snapshots_dir = Pathname.new(Dir.mktmpdir ['fs-snap-', '-snapshots'])
+		require 'tmpdir'
+		data_dir      = Dir.tmpdir + "/fs-snap-#{$$}-data"
+		snapshots_dir = Dir.tmpdir + "/fs-snap-#{$$}-snapshots"
+		Dir.mkdir(data_dir)
+		Dir.mkdir(snapshots_dir)
+		@data_dir, @snapshots_dir = Pathname.new(data_dir), Pathname.new(snapshots_dir)
 		@snapshoter = FsSnapshoter.new @data_dir, @snapshots_dir
 
 		# create test dir structure
