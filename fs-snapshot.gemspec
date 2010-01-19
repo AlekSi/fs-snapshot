@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fs-snapshot}
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aleksey Palazhchenko"]
-  s.date = %q{2009-12-04}
+  s.date = %q{2010-01-19}
   s.description = %q{}
-  s.email = %q{alek.silverstone@gmail.com}
+  s.email = %q{alek@silverstone.name}
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Manages snapshots of the filesystem.}
+  s.summary = %q{Tiny gem to manage directory snapshots.}
   s.test_files = [
     "test/helper.rb",
      "test/test_fs-snapshoter.rb"
@@ -44,12 +44,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 
