@@ -67,15 +67,9 @@ class TestFsSnapshoter < Test::Unit::TestCase
 		end
 
 		should "raise exceptions" do
-			assert_raise RuntimeError do
-				@snapshoter.take('snap1')
-			end
-			assert_raise RuntimeError do
-				@snapshoter.restore('no_such_snapshot')
-			end
-			assert_raise RuntimeError do
-				@snapshoter.delete('no_such_snapshot')
-			end
+			assert_raise(RuntimeError) { @snapshoter.take('snap1') }
+			assert_raise(RuntimeError) { @snapshoter.restore('no_such_snapshot') }
+			assert_raise(RuntimeError) { @snapshoter.delete('no_such_snapshot') }
 		end
 	end
 
